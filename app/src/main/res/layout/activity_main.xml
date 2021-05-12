@@ -12,7 +12,7 @@
         android:id="@+id/editTextPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="196dp"
         android:autofillHints="Enter Phone number"
         android:ems="10"
         android:hint="@string/enter_your_phone_number"
