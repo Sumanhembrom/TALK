@@ -67,4 +67,12 @@
         android:text="Button"
         tools:layout_editor_absoluteX="83dp"
         tools:layout_editor_absoluteY="448dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="134dp"
+        tools:layout_editor_absoluteY="523dp"
+        tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>
