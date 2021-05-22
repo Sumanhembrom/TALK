@@ -3,4 +3,14 @@
     <string name="welcome_to_talk_messenger">Welcome to Talk Messenger</string>
     <string name="login">Login</string>
     <string name="enter_your_phone_number">Enter your Phone number</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="please_enter_your_phone_number">Please Enter your phone number</string>
+    <string name="_91xxxxxxxxxx">+91XXXXXXXXXX</string>
+    <string name="get_otp">GET OTP</string>
+    <string name="verification_otp">Verification OTP</string>
+    <string name="please_enter_the_verification_code_we_sent_to_your_mobile">PLease enter the verification code we sent to your mobile</string>
+    <string name="submit">Submit</string>
+    <string name="didn_t_get_otp_resend">Didn\'t get OTP? <b>Resend</b> </string>
+    <string name="_123456">123456</string>
+    <string name="todo">TODO</string>
 </resources>
