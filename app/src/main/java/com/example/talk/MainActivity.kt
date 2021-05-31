@@ -51,11 +51,13 @@ class MainActivity : AppCompatActivity() {
 
             override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
 
+                Log.d(TAG, "onVerificationCompleted: ")
                 signInWithPhoneAuthCredential(phoneAuthCredential)
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
                 progressDialog.dismiss()
+                Log.d(TAG, "onVerificationFailed: $(e.message)")
                 Toast.makeText(this@MainActivity, "$(e.message)", Toast.LENGTH_SHORT).show()
             }
 
@@ -66,15 +68,17 @@ class MainActivity : AppCompatActivity() {
                 forceResendingToken = token
                 progressDialog.dismiss()
 
-                binding.phoneLo.visibility = View.VISIBLE
-                binding.OTPLo.visibility = View.GONE
+                Log.d(TAG, "onCodeSent: $verificationId")
+
+                binding.phoneLo.visibility = View.GONE
+                binding.OTPLo.visibility = View.VISIBLE
                 Toast.makeText(this@MainActivity, "Verification Code Sent...", Toast.LENGTH_SHORT).show()
                 binding.OTPSentDescription.text = "Please type the OTP we sent to ${binding.phonenumber.text.toString().trim()}"
             }
         }
 
         binding.getotp.setOnClickListener {
-           //input phone number
+            //input phone number
             val phone = binding.phonenumber.text.toString().trim()
             //validate phone number
             if(TextUtils.isEmpty(phone)){
@@ -98,7 +102,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.Submit.setOnClickListener {
-        //input verification code
+            //input verification code
             val code = binding.OTP.text.toString().trim()
             if(TextUtils.isEmpty(code)){
                 Toast.makeText(this@MainActivity, "please enter the OTP sent", Toast.LENGTH_SHORT).show()
@@ -110,6 +114,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startPhoneNumberVerification(phone: String){
+        Log.d(TAG, "startPhoneNumberVerification: $phone")
         progressDialog.setMessage("Verifying phone number..")
         progressDialog.show()
 
@@ -128,6 +133,8 @@ class MainActivity : AppCompatActivity() {
         progressDialog.setMessage("Resending Code..")
         progressDialog.show()
 
+        Log.d(TAG, "resendVerificationCode: $phone")
+
         val options = PhoneAuthOptions.newBuilder(firebaseAuth)
             .setPhoneNumber(phone)
             .setTimeout(60L, TimeUnit.SECONDS)
@@ -139,6 +146,7 @@ class MainActivity : AppCompatActivity() {
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
     private fun verifyPhoneNumberWithCode(verificationId: String?, code: String){
+        Log.d(TAG, "verifyPhoneNumberWithCode: $verificationId $code")
         progressDialog.setMessage("Verifying Code...")
         progressDialog.show()
 
@@ -147,6 +155,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+        Log.d(TAG, "signInWithPhoneAuthCredential: ")
         progressDialog.setMessage("Logging in...")
 
         firebaseAuth.signInWithCredential(credential)
